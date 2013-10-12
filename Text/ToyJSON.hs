@@ -6,7 +6,6 @@
 module Text.ToyJSON (
         JSONValue
       , parseJSON
-      , parseJSONFile
     )
 where
 
