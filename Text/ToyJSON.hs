@@ -3,7 +3,12 @@
 -- This is a toy JSON parser. I made this to test parsec.
 --
 
-module ToyJSON where
+module Text.ToyJSON (
+        JSONValue
+      , parseJSON
+      , parseJSONFile
+    )
+where
 
 import Text.ParserCombinators.Parsec hiding ((<|>), many)
 import Control.Applicative
@@ -64,6 +69,7 @@ jsonValue = (JSONBool <$> litBool)
         <|> (JSONArray <$> litArray)
         <|> (JSONObject <$> litObject)
 
-jsonFile :: Parser JSONValue
-jsonFile = jsonValue <* eof
+parseJSON = parse jsonValue
+
+parseJSONFile = parseFromFile (jsonValue <* eof)
 

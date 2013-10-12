@@ -1,8 +1,11 @@
-module Expr (Expr(..),
-             BinOp(..),
-             eval,
-             parseExpr)
-    where
+{-# LANGUAGE DeriveDataTypeable #-}
+
+module Text.ToyMath.Expr (
+    Expr(..)
+  , BinOp(..)
+  , eval
+  , parseExpr
+) where
  
 import Data.Generics
 import Text.ParserCombinators.Parsec

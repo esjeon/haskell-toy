@@ -1,10 +1,10 @@
-module Expr.Quote (expr) where
+module Text.ToyMath.Quote (expr) where
  
 import Data.Generics
 import qualified Language.Haskell.TH as TH
 import Language.Haskell.TH.Quote
  
-import Expr
+import Text.ToyMath.Expr
 
 
 quoteExprExp :: String -> TH.ExpQ
