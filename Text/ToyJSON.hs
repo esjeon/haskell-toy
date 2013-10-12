@@ -4,7 +4,7 @@
 --
 
 module Text.ToyJSON (
-        JSONValue
+        JSONValue(..)
       , parseJSON
     )
 where
