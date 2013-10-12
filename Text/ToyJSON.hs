@@ -1,4 +1,4 @@
-
+{-# LANGUAGE DeriveDataTypeable #-}
 --
 -- This is a toy JSON parser. I made this to test parsec.
 --
@@ -10,6 +10,7 @@ module Text.ToyJSON (
     )
 where
 
+import Data.Generics
 import Text.ParserCombinators.Parsec hiding ((<|>), many)
 import Control.Applicative
 import Control.Monad
@@ -20,7 +21,7 @@ data JSONValue =
     | JSONArray [JSONValue]
     | JSONObject [(String, JSONValue)]
     | JSONNumber Double
-    deriving (Show)
+    deriving (Show, Typeable, Data)
 
 ws :: Parser String
 ws = many (oneOf " \t\n\r")
@@ -69,7 +70,5 @@ jsonValue = (JSONBool <$> litBool)
         <|> (JSONArray <$> litArray)
         <|> (JSONObject <$> litObject)
 
-parseJSON = parse jsonValue
-
-parseJSONFile = parseFromFile (jsonValue <* eof)
+parseJSON = parse (wsw jsonValue <* eof) ""
 
