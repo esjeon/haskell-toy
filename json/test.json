@@ -1,0 +1,11 @@
+{
+	"name": "Eon",
+	"male": true,
+	"hobby": ["Music", "Physics"],
+	"books": {
+		"Pensees": true,
+		"Tractatus Logico-Philosophicus": true,
+		"Harry Potter": false
+	}
+}
+
